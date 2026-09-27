@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sky Book Pro — Complete Travel Booking Platform</title>
+<style>
+:root{--navy:#04132e;--navy2:#0a2855;--blue:#087fff;--cyan:#55c2ff;--ink:#08172f;--muted:#6b7b92;--line:#dce6f1;--bg:#f4f8fc;--white:#fff;--green:#18a66f;--gold:#f4b63e;--red:#df4d5b;--shadow:0 20px 65px rgba(5,27,61,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.top{background:#021027;color:#b9cae1;text-align:center;padding:7px;font-size:12px}.top b{color:#fff}
+nav{height:82px;background:#061735;color:#fff;display:flex;align-items:center;padding:0 max(22px,calc((100% - 1380px)/2));gap:30px;position:sticky;top:0;z-index:30;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.brand{font-size:25px;font-weight:900;letter-spacing:-1.6px;white-space:nowrap}.brand span{color:#55b7ff}.brand small{display:block;font-size:10px;font-weight:500;letter-spacing:.1px;color:#9fb3cd;margin-top:2px}
+.navlinks{display:flex;gap:24px;margin-left:auto}.navlinks a{color:#dbe8f8;text-decoration:none;font-size:13px}.navlinks a:hover{color:#59bcff}
+.pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:11px;padding:10px 13px}.primary{border:0;border-radius:12px;background:linear-gradient(135deg,#087fff,#35b0ff);color:#fff;font-weight:800;padding:13px 20px;box-shadow:0 9px 25px rgba(8,127,255,.23)}.secondary{border:1px solid #cddbea;background:#fff;color:#12305a;border-radius:11px;padding:11px 15px;font-weight:700}
+.hero{min-height:720px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 25%,rgba(83,190,255,.34),transparent 28%),radial-gradient(circle at 90% 80%,rgba(255,184,96,.35),transparent 18%),linear-gradient(125deg,#020d24,#082d60 48%,#0879d4)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(1,12,31,.65));pointer-events:none}
+.hero-content{max-width:1380px;margin:0 auto;padding:85px 28px 0;position:relative;z-index:2}.eyebrow{display:inline-block;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);border-radius:999px;padding:9px 14px;font-size:12px}h1{font-size:clamp(52px,6.5vw,92px);line-height:.96;letter-spacing:-4px;max-width:800px;margin:22px 0}.hero h1 span{color:#58baff}.lead{font-size:20px;line-height:1.55;max-width:610px;color:#e3f1ff}.trust{display:flex;gap:24px;flex-wrap:wrap;margin-top:25px;font-size:13px}
+.search{max-width:1320px;margin:-235px auto 0;position:relative;z-index:5;background:rgba(4,20,47,.97);border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:20px;color:#fff;box-shadow:0 30px 90px rgba(0,0,0,.28)}.tabs{display:flex;gap:5px;margin-bottom:15px}.tab{border:0;background:transparent;color:#b8cae0;padding:12px 18px;border-radius:11px}.tab.active{background:#087fff;color:#fff}.fields{display:grid;grid-template-columns:1.15fr 1.15fr .9fr .9fr 1.05fr;gap:1px;overflow:hidden;border-radius:16px;background:rgba(255,255,255,.13)}.field{background:#0a2147;padding:17px 18px;min-height:87px}.field label{display:block;color:#90a7c4;text-transform:uppercase;font-size:10px;letter-spacing:.08em;margin-bottom:8px}.field input,.field select{width:100%;background:none;border:0;outline:0;color:#fff;font-weight:700}.field select option{color:#111}.search-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:15px}.checks{display:flex;gap:16px;color:#c8d7ea;font-size:12px}.checks label{display:flex;gap:7px;align-items:center}
+main{max-width:1380px;margin:auto;padding:42px 28px 90px}.benefits{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.benefit{text-align:center;padding:28px 14px;border-right:1px solid var(--line)}.benefit:last-child{border:0}.benefit b,.benefit p{display:block}.benefit p{font-size:12px;color:var(--muted);margin:6px 0 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:70px 0 22px}.section-head h2{font-size:37px;letter-spacing:-1.5px;margin:0}.section-head p{color:var(--muted);margin:7px 0 0}.destinations{display:grid;grid-template-columns:repeat(5,1fr);gap:17px}.destination{height:315px;border-radius:21px;overflow:hidden;position:relative;background:linear-gradient(150deg,#1689ef,#09244d);box-shadow:0 12px 35px rgba(5,29,62,.12)}.destination:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(2,12,28,.88))}.dest-bg{position:absolute;inset:0;opacity:.8;transition:.4s}.destination:hover .dest-bg{transform:scale(1.06)}.dest-info{position:absolute;bottom:0;padding:19px;color:#fff;width:100%}.dest-info strong{font-size:20px}.dest-info small{display:block;opacity:.72}.price{float:right;font-weight:800}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.feature{min-height:235px;border-radius:23px;padding:30px;background:#071c3c;color:#fff}.feature:nth-child(2){background:#e9f4ff;color:#09224a}.feature h3{font-size:25px;margin:0 0 9px}.feature p{line-height:1.55;max-width:390px;color:inherit;opacity:.75}
+.pro{margin-top:75px;border-radius:30px;overflow:hidden;background:linear-gradient(135deg,#061735,#0c3d78);color:#fff;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--shadow)}.pro-copy{padding:58px}.pro-copy h2{font-size:42px;line-height:1.05;letter-spacing:-1.8px;margin:14px 0}.mini{font-size:11px;letter-spacing:.16em;color:#66c6ff;font-weight:900}.pro-copy>p{color:#c7d9ee;line-height:1.65}.points{display:grid;gap:16px;margin:27px 0}.points div{display:flex;gap:14px}.points b{color:#57baff}.points small{display:block;color:#a9bed7;margin-top:3px}.pro-card{margin:34px;background:#fff;color:#09204a;border-radius:24px;padding:25px;align-self:center}.route{display:grid;grid-template-columns:1fr 1.2fr 1fr;align-items:center;gap:12px;border:1px solid var(--line);border-radius:17px;padding:19px;margin:20px 0}.route strong{display:block;font-size:27px;margin:5px 0}.route small,.route span{display:block;color:var(--muted);font-size:11px}.route .right{text-align:right}.route-mid{text-align:center;font-size:10px;color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:7px}.meta span{font-size:11px;background:#eef7ff;border-radius:99px;padding:7px 9px;color:#42698e}.price-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:20px;padding-top:19px}.price-row strong{display:block;font-size:30px}
+.trust-banner{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.trust-banner div{border-right:1px solid var(--line);padding-right:18px}.trust-banner div:last-child{border:0}.trust-banner strong,.trust-banner small{display:block}.trust-banner small{color:var(--muted);font-size:12px;line-height:1.5;margin-top:4px}.stats{margin-top:25px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;grid-template-columns:repeat(5,1fr);text-align:center}.stats b{font-size:24px}.stats span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+
+#app{max-width:1380px;margin:auto;padding:20px 28px 80px}.screen{display:none}.screen.active{display:block}.screen-title{display:flex;justify-content:space-between;align-items:center;margin:25px 0}.screen-title h2{font-size:38px;letter-spacing:-1.5px;margin:0}.breadcrumbs{color:var(--muted);font-size:12px;margin-bottom:10px}
+.results-layout{display:grid;grid-template-columns:260px 1fr;gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(6,30,65,.06)}.panel h3{margin:0 0 16px}.filter{padding:15px 0;border-top:1px solid var(--line)}.filter label{display:flex;justify-content:space-between;margin:8px 0;font-size:13px}.range{width:100%}.flight-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:12px;display:grid;grid-template-columns:1fr 1.7fr 1fr;align-items:center;gap:15px;transition:.2s}.flight-card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}.airline{font-weight:800}.airline small{display:block;color:var(--muted);font-weight:500;margin-top:4px}.times{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:center}.times strong{font-size:21px}.times small{display:block;color:var(--muted)}.line{height:1px;background:#b8c8da;width:100px;margin:0 9px}.fare{text-align:right}.fare strong{font-size:24px;display:block}.fare small{color:var(--muted)}.fare button{margin-top:9px}
+
+.steps{display:flex;gap:8px;overflow:auto;margin:10px 0 22px}.step{white-space:nowrap;background:#e8f0f8;color:#6c7d94;border-radius:99px;padding:9px 14px;font-size:12px;font-weight:800}.step.active{background:#087fff;color:#fff}.booking-grid{display:grid;grid-template-columns:1.5fr .8fr;gap:18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-group label{display:block;font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.form-group input,.form-group select{width:100%;border:1px solid #d5e0eb;border-radius:10px;padding:12px;outline:0;background:#fff}.form-group input:focus,.form-group select:focus{border-color:#087fff;box-shadow:0 0 0 3px rgba(8,127,255,.1)}
+.seats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;max-width:410px;margin:auto;padding:25px;background:#eef5fb;border-radius:28px}.seat{height:42px;border:1px solid #b7c9db;background:#fff;border-radius:9px;font-size:11px}.seat.aisle{visibility:hidden}.seat.taken{background:#c9d5e1;color:#7b8999}.seat.selected{background:#087fff;color:#fff;border-color:#087fff}.seat.exit{border-color:#efad44}
+.summary{position:sticky;top:105px}.summary-row{display:flex;justify-content:space-between;margin:11px 0;color:#586c85}.summary-total{border-top:1px solid var(--line);padding-top:14px;margin-top:15px;font-weight:900;font-size:20px}
+.confirm{padding:55px 20px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:24px}.checkmark{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#dff7ec;color:#139664;font-size:40px;margin:auto}.booking-ref{font-size:28px;font-weight:900;letter-spacing:2px;margin:15px 0}.ticket{max-width:700px;margin:25px auto;background:#071b3c;color:#fff;border-radius:20px;padding:25px;text-align:left}.ticket-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}.ticket small{color:#9fb5d1;display:block}.ticket strong{font-size:20px;display:block;margin-top:5px}
+
+.dashboard{display:grid;grid-template-columns:220px 1fr;gap:18px}.side{background:#061735;color:#fff;border-radius:18px;padding:16px;height:max-content;position:sticky;top:105px}.side button{width:100%;border:0;background:transparent;color:#bcd0e8;text-align:left;padding:12px;border-radius:10px;margin:2px 0}.side button.active,.side button:hover{background:#0d3975;color:#fff}.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.metric{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}.metric b{font-size:29px}.metric span{display:block;color:var(--muted);font-size:12px;margin-top:5px}.trip{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:15px;display:flex;justify-content:space-between;align-items:center}.trip-route{font-size:21px;font-weight:800}.trip small{color:var(--muted)}
+.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px}.badge{display:inline-block;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#e3f7ed;color:#147b57}.badge.warn{background:#fff2d8;color:#9b6712}
+footer{background:#04132e;color:#d8e5f5;padding:65px 28px 25px}.footer-grid{max-width:1380px;margin:auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.3fr;gap:35px}.footer-grid h4{color:#fff;margin:0 0 13px}.footer-grid a{display:block;color:#9db2cd;text-decoration:none;font-size:13px;margin:9px 0}.copyright{max-width:1380px;margin:35px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#8096b2;display:flex;justify-content:space-between}
+.modal{display:none;position:fixed;inset:0;background:rgba(2,10,24,.75);backdrop-filter:blur(8px);z-index:50;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{background:#fff;border-radius:22px;max-width:650px;width:100%;padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.3)}.close{float:right;border:0;background:#edf3f9;border-radius:9px;padding:8px}.result{margin-top:17px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#f7fbff}
+
+@media(max-width:1050px){.navlinks{display:none}.fields{grid-template-columns:1fr 1fr 1fr}.destinations{grid-template-columns:repeat(3,1fr)}.benefits{grid-template-columns:repeat(3,1fr)}.benefit:nth-child(3){border:0}.pro{grid-template-columns:1fr}.results-layout{grid-template-columns:1fr}.booking-grid{grid-template-columns:1fr}.summary{position:static}.dashboard{grid-template-columns:1fr}.side{position:static}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){nav{height:72px}.nav-actions .pill:first-child{display:none}.hero{min-height:650px}.hero-content{padding-top:55px}.hero h1{font-size:48px;letter-spacing:-2px}.search{margin:-75px 10px 0}.fields{grid-template-columns:1fr}.search-bottom{flex-direction:column;align-items:stretch}.primary{width:100%}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--line)}.destinations{grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}.section-head{align-items:flex-start;gap:12px;flex-direction:column}.pro-copy{padding:35px}.pro-card{margin:20px}.route{grid-template-columns:1fr}.route .right{text-align:left}.route-mid{text-align:left}.trust-banner{grid-template-columns:1fr}.trust-banner div{border-right:0;border-bottom:1px solid var(--line);padding-bottom:15px}.stats{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.flight-card{grid-template-columns:1fr}.fare{text-align:left}.times{max-width:360px}.footer-grid{grid-template-columns:1fr}.copyright{flex-direction:column;gap:9px}.ticket-grid{grid-template-columns:1fr}}
+
+/* Premium loading animation */
+#pageLoader{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#020d24,#07336b,#087fff);color:#fff;
+  transition:opacity .65s ease,visibility .65s ease;
+}
+#pageLoader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-box{text-align:center;min-width:260px}
+.loader-logo{font-size:34px;font-weight:950;letter-spacing:-2px}
+.loader-logo span{color:#65c7ff}
+.loader-plane{font-size:45px;display:inline-block;margin:22px 0;animation:flyPlane 1.8s cubic-bezier(.4,0,.2,1) infinite}
+.loader-ring{
+  width:54px;height:54px;border:3px solid rgba(255,255,255,.2);
+  border-top-color:#fff;border-right-color:#5cc3ff;border-radius:50%;
+  margin:0 auto 20px;animation:spin 1s linear infinite;
+}
+.loader-text{font-size:13px;color:#c9e5ff;letter-spacing:.08em}
+.loader-bar{height:4px;width:230px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin:16px auto 0}
+.loader-bar i{display:block;width:0;height:100%;background:#fff;border-radius:99px;animation:loadBar 1.7s ease forwards}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes loadBar{0%{width:0}100%{width:100%}}
+@keyframes flyPlane{0%,100%{transform:translateX(-12px) translateY(4px) rotate(-5deg)}50%{transform:translateX(12px) translateY(-7px) rotate(5deg)}}
+.loading-overlay{
+  position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;
+  background:rgba(3,16,39,.52);backdrop-filter:blur(5px)
+}
+.loading-overlay.active{display:flex}
+.mini-loader{background:#fff;border-radius:18px;padding:22px 28px;box-shadow:0 20px 70px rgba(0,0,0,.25);text-align:center}
+.mini-spinner{width:32px;height:32px;border:3px solid #dce8f5;border-top-color:#087fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 10px}
+
+
+/* Real travel photography layer */
+.hero{
+  background:
+    linear-gradient(90deg,rgba(2,13,36,.92) 0%,rgba(4,30,67,.78) 45%,rgba(4,24,52,.34) 100%),
+    url("https://assets.airtrfx.com/media-em/nh/TOKYO-BANNER.jpg") center/cover no-repeat;
+}
+.destination .dest-bg{
+  background-size:cover!important;background-position:center!important;opacity:1!important;
+}
+.destination:nth-child(1) .dest-bg{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.2)),url("https://www.artofit.org/image-gallery/eiffel-tower/")!important;
+}
+.destination:nth-child(2) .dest-bg{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.22)),url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=85")!important;
+}
+.destination:nth-child(3) .dest-bg{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.22)),url("https://assets.airtrfx.com/media-em/nh/TOKYO-BANNER.jpg")!important;
+}
+.destination:nth-child(4) .dest-bg{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.25)),url("https://virginvoyages.imgix.net/dam/jcr%3Affb44db3-880b-4099-8f73-026b72ef104b/brilliant-lady-nyc-arrival-6.JPG")!important;
+}
+.destination:nth-child(5) .dest-bg{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18)),url("https://imgcdn.flamingotravels.co.in/Images/City/paradise-beach-bali.jpg")!important;
+}
+.pro{
+  background:
+    linear-gradient(135deg,rgba(4,19,46,.97),rgba(8,61,120,.84)),
+    url("https://assets.airtrfx.com/media-em/nh/TOKYO-BANNER.jpg") center/cover;
+}
+.image-strip{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;margin-top:22px}
+.image-tile{height:220px;border-radius:20px;overflow:hidden;position:relative;background-size:cover;background-position:center;box-shadow:0 14px 40px rgba(5,28,61,.13)}
+.image-tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(2,14,32,.75))}
+.image-tile div{position:absolute;z-index:2;left:20px;bottom:17px;color:#fff}.image-tile strong{font-size:21px;display:block}.image-tile small{opacity:.78}
+.image-tile.paris{background-image:url("https://www.artofit.org/image-gallery/eiffel-tower/")}
+.image-tile.tokyo{background-image:url("https://assets.airtrfx.com/media-em/nh/TOKYO-BANNER.jpg")}
+.image-tile.bali{background-image:url("https://imgcdn.flamingotravels.co.in/Images/City/paradise-beach-bali.jpg")}
+@media(max-width:680px){.image-strip{grid-template-columns:1fr}.image-tile{height:190px}}
+
+
+/* Full visual image treatment */
+.hero-content{max-width:1380px}
+.search{backdrop-filter:blur(12px)}
+.feature{position:relative;overflow:hidden;background-size:cover!important;background-position:center!important}
+.feature:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(3,18,43,.88),rgba(3,34,76,.58))}
+.feature>*{position:relative;z-index:1}
+.feature:nth-child(1){background-image:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=85")!important;color:#fff}
+.feature:nth-child(2){background-image:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85")!important;color:#fff}
+.feature:nth-child(3){background-image:url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=85")!important;color:#fff}
+.feature:nth-child(2):before{background:linear-gradient(135deg,rgba(2,20,45,.82),rgba(4,69,120,.52))}
+.feature:nth-child(3):before{background:linear-gradient(135deg,rgba(2,17,39,.88),rgba(5,58,93,.52))}
+
+.flight-card{position:relative;overflow:hidden}
+.flight-card:after{content:"";position:absolute;right:-30px;top:-45px;width:170px;height:170px;border-radius:50%;background:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=70") center/cover;opacity:.10;pointer-events:none}
+.panel{position:relative;overflow:hidden}
+.panel.photo-panel{background-size:cover;background-position:center;color:#fff}
+.booking-visual{min-height:190px;border-radius:18px;background:linear-gradient(90deg,rgba(2,17,39,.78),rgba(2,17,39,.2)),url("https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1400&q=85") center/cover;display:flex;align-items:end;padding:25px;color:#fff;margin-bottom:15px}
+.seat-visual{background:linear-gradient(180deg,rgba(2,17,39,.08),rgba(2,17,39,.72)),url("https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1400&q=85") center/cover;border-radius:20px;padding:28px;color:#fff;margin-bottom:20px}
+.confirm{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(247,251,255,.96)),url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=75") center/cover}
+.ticket{background:linear-gradient(135deg,rgba(3,20,48,.95),rgba(8,70,125,.88)),url("https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1000&q=75") center/cover}
+.side{background:linear-gradient(180deg,rgba(4,19,46,.95),rgba(6,49,95,.9)),url("https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=800&q=75") center/cover}
+.metric{position:relative;overflow:hidden}
+.metric:after{content:"";position:absolute;right:-20px;bottom:-25px;width:100px;height:100px;border-radius:50%;background:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=70") center/cover;opacity:.08}
+.trip{position:relative;overflow:hidden}
+.trip:before{content:"";width:150px;height:100%;position:absolute;right:0;top:0;background:linear-gradient(90deg,transparent,rgba(8,127,255,.08)),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=75") center/cover;opacity:.55}
+footer{background:linear-gradient(90deg,rgba(2,13,36,.97),rgba(3,34,72,.94)),url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=70") center/cover}
+
+
+/* Dedicated Dubai / New York / Paris destination imagery */
+.city-image-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.city-image{height:360px;border-radius:24px;overflow:hidden;position:relative;background-size:cover;background-position:center;box-shadow:0 18px 55px rgba(4,25,57,.16)}
+.city-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,12,28,.02) 30%,rgba(2,12,28,.82) 100%)}
+.city-image .city-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;color:#fff}
+.city-image .city-copy span{display:inline-block;background:rgba(255,255,255,.14);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 10px;font-size:10px;margin-bottom:9px}
+.city-image h3{font-size:30px;letter-spacing:-1px;margin:0}
+.city-image p{font-size:13px;margin:5px 0 0;color:#dcecff}
+.city-dubai{background-image:url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=88")}
+.city-newyork{background-image:url("https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=1400&q=88")}
+.city-paris{background-image:url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1400&q=88")}
+.city-image:hover{transform:translateY(-4px);transition:transform .3s ease}
+@media(max-width:800px){.city-image-row{grid-template-columns:1fr}.city-image{height:300px}}
+
+
+.currency-menu{position:fixed;right:24px;top:68px;width:285px;background:#fff;color:#091b37;border:1px solid #d9e4ef;border-radius:17px;padding:12px;box-shadow:0 25px 70px rgba(3,24,55,.22);z-index:100;display:none}
+.currency-menu.open{display:block;animation:currencyIn .18s ease-out}
+.currency-menu h4{margin:7px 9px 10px;font-size:14px}
+.currency-option{width:100%;border:0;background:#fff;border-radius:11px;padding:11px;text-align:left;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.currency-option:hover{background:#eef6ff}
+.currency-option .code{font-weight:900}.currency-option small{color:#72839a}.currency-check{color:#087fff;font-weight:900}
+@keyframes currencyIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+.currency-note{font-size:10px;color:#7a8ba0;padding:7px 9px;border-top:1px solid #e4ebf3;margin-top:5px}
+
+</style>
+</head>
+<body>
+
+<div class="currency-menu" id="currencyMenu">
+  <h4>Choose your currency</h4>
+  <button class="currency-option" onclick="setCurrency('USD','$','US Dollar')"><span><span class="code">USD</span> <small>US Dollar</small></span><span class="currency-check" id="check-USD">✓</span></button>
+  <button class="currency-option" onclick="setCurrency('CAD','C$','Canadian Dollar')"><span><span class="code">CAD</span> <small>Canadian Dollar</small></span><span class="currency-check" id="check-CAD"></span></button>
+  <button class="currency-option" onclick="setCurrency('EUR','€','Euro')"><span><span class="code">EUR</span> <small>Euro</small></span><span class="currency-check" id="check-EUR"></span></button>
+  <button class="currency-option" onclick="setCurrency('GBP','£','British Pound')"><span><span class="code">GBP</span> <small>British Pound</small></span><span class="currency-check" id="check-GBP"></span></button>
+  <button class="currency-option" onclick="setCurrency('AED','د.إ','UAE Dirham')"><span><span class="code">AED</span> <small>UAE Dirham</small></span><span class="currency-check" id="check-AED"></span></button>
+  <div class="currency-note">Prices shown in this prototype update using illustrative exchange rates.</div>
+</div>
+
+<div id="pageLoader">
+  <div class="loader-box">
+    <div class="loader-logo">SKY <span>BOOK</span> PRO ✈</div>
+    <div class="loader-plane">✈</div>
+    <div class="loader-ring"></div>
+    <div class="loader-text">PREPARING YOUR JOURNEY</div>
+    <div class="loader-bar"><i></i></div>
+  </div>
+</div>
+<div class="loading-overlay" id="actionLoader">
+  <div class="mini-loader">
+    <div class="mini-spinner"></div>
+    <b id="actionLoaderText">Searching the best flights…</b>
+  </div>
+</div>
+
+<div class="top">✦ <b>Sky Book Pro</b> — Compare 500+ airlines and discover smarter ways to travel.</div>
+
+<nav>
+  <div class="brand">SKY <span>BOOK</span> PRO ✈<small>Your world. One booking away.</small></div>
+  <div class="navlinks">
+    <a href="#home">Flights</a><a href="#destinations">Hotels</a><a href="#destinations">Cars</a><a href="#deals">Deals</a><a href="#destinations">Explore</a><a href="#" onclick="showScreen('trips');return false">My Trips</a>
+  </div>
+  <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><button class="pill" id="currencyBtn" onclick="toggleCurrencyMenu()">USD⌄</button><button class="pill">🌐</button><button class="pill" onclick="openModal('Account')">Sign in / Register</button></div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">✦ The smarter way to travel</span>
+    <h1>Travel further.<br><span>Book better.</span></h1>
+    <p class="lead">Compare thousands of flights, choose the right fare, reserve your seat and manage your whole journey in one beautiful travel platform.</p>
+    <div class="trust"><span>🛡 Best Price Guarantee</span><span>🔒 Secure Checkout</span><span>◉ Human Support 24/7</span><span>✦ 200+ Countries</span></div>
+  </div>
+</section>
+
+<section class="search" id="search">
+  <div class="tabs"><button class="tab active" data-trip="Round Trip">⇄ Round Trip</button><button class="tab" data-trip="One Way">→ One Way</button><button class="tab" data-trip="Multi-City">✣ Multi-City</button></div>
+  <form id="searchForm">
+    <div class="fields">
+      <div class="field"><label>From</label><input id="from" value="New York (JFK)" required/></div>
+      <div class="field"><label>To</label><input id="to" value="London (LHR)" required/></div>
+      <div class="field"><label>Depart</label><input id="depart" type="date" required/></div>
+      <div class="field" id="returnField"><label>Return</label><input id="return" type="date"/></div>
+      <div class="field"><label>Travelers & Class</label><select><option>1 Passenger · Economy</option><option>2 Passengers · Economy</option><option>1 Passenger · Business</option><option>2 Passengers · Business</option></select></div>
+    </div>
+    <div class="search-bottom"><div class="checks"><label><input type="checkbox"/> Nearby airports</label><label><input type="checkbox"/> Flexible dates</label><label><input type="checkbox"/> Direct flights</label></div><button class="primary">Search Flights →</button></div>
+  </form>
+</section>
+
+<main>
+  <div class="benefits">
+    <div class="benefit">✈<b>500+ Airlines</b><p>Compare more ways to fly</p></div><div class="benefit">◉<b>Best Price Guarantee</b><p>Transparent fares</p></div><div class="benefit">▣<b>Flexible Booking</b><p>Change with confidence</p></div><div class="benefit">♢<b>Secure Payments</b><p>Protected checkout</p></div><div class="benefit">◌<b>24/7 Support</b><p>Human help when needed</p></div>
+  </div>
+
+  <div class="section-head" id="destinations"><div><h2>Popular destinations</h2><p>Inspiration for your next journey.</p></div><button class="secondary" onclick="openModal('Explore destinations')">View all →</button></div>
+  <div class="destinations">
+    <div class="destination"><div class="dest-bg" style="background:linear-gradient(145deg,#3da8ff,#182c59)"></div><div class="dest-info"><span class="price">From $432</span><strong>Paris</strong><small>France · Romantic escapes</small></div></div>
+    <div class="destination"><div class="dest-bg" style="background:linear-gradient(145deg,#f5a640,#152b56)"></div><div class="dest-info"><span class="price">From $645</span><strong>Dubai</strong><small>UAE · Luxury & sunshine</small></div></div>
+    <div class="destination"><div class="dest-bg" style="background:linear-gradient(145deg,#48b7ff,#e26754)"></div><div class="dest-info"><span class="price">From $715</span><strong>Tokyo</strong><small>Japan · Culture & energy</small></div></div>
+    <div class="destination"><div class="dest-bg" style="background:linear-gradient(145deg,#58b6ff,#48214f)"></div><div class="dest-info"><span class="price">From $210</span><strong>New York</strong><small>USA · The city that never sleeps</small></div></div>
+    <div class="destination"><div class="dest-bg" style="background:linear-gradient(145deg,#f2b66b,#176d82)"></div><div class="dest-info"><span class="price">From $499</span><strong>Bali</strong><small>Indonesia · Island escapes</small></div></div>
+  </div>
+
+
+  <div class="section-head" style="margin-top:72px">
+    <div><h2>Explore iconic cities</h2><p>Start your next adventure in Dubai, New York or Paris.</p></div>
+    <button class="secondary" onclick="openModal('City explorer')">Explore all cities →</button>
+  </div>
+  <div class="city-image-row">
+    <div class="city-image city-dubai">
+      <div class="city-copy"><span>UNITED ARAB EMIRATES</span><h3>Dubai</h3><p>Skyline views · Luxury escapes · From $645</p></div>
+    </div>
+    <div class="city-image city-newyork">
+      <div class="city-copy"><span>UNITED STATES</span><h3>New York</h3><p>Iconic city life · Broadway · From $210</p> </div>
+    </div>
+    <div class="city-image city-paris">
+      <div class="city-copy"><span>FRANCE</span><h3>Paris</h3><p>Romance · Art · Cafés · From $432</p></div>
+    </div>
+  </div>
+
+  <div class="feature-grid" id="deals">
+    <div class="feature"><h3>Flexible Dates?</h3><p>See a calendar of cheaper departure dates and optimize your trip around price.</p><button class="secondary" onclick="showScreen('results')">Open price calendar</button></div>
+    <div class="feature"><h3>Exclusive Deals</h3><p>Discover limited-time fares and destination offers curated for smarter travel.</p><button class="secondary" onclick="openModal('Exclusive deals')">View deals</button></div>
+    <div class="feature"><h3>Price Alerts</h3><p>Track a route and get notified when fares move in the direction you want.</p><button class="secondary" onclick="openModal('Price alert')">Create alert</button></div>
+  </div>
+
+
+  <div class="section-head" style="margin-top:70px"><div><h2>See where Sky Book Pro can take you</h2><p>Beautiful destinations, one seamless booking experience.</p></div></div>
+  <div class="image-strip">
+    <div class="image-tile paris"><div><strong>Paris</strong><small>Classic Europe · From $432</small></div></div>
+    <div class="image-tile tokyo"><div><strong>Tokyo</strong><small>Japan · From $715</small></div></div>
+    <div class="image-tile bali"><div><strong>Bali</strong><small>Island escape · From $499</small></div></div>
+  </div>
+
+  <section class="pro">
+    <div class="pro-copy"><span class="mini">THE SKY BOOK PRO DIFFERENCE</span><h2>Everything you need to travel smarter.</h2><p>Search, compare, customize, pay and manage your journey without bouncing between disconnected travel tools.</p><div class="points"><div><b>01</b><span><strong>Transparent fares</strong><small>Know what you're paying before checkout.</small></span></div><div><b>02</b><span><strong>Smart recommendations</strong><small>Balance price, duration, stops and comfort.</small></span></div><div><b>03</b><span><strong>One seamless trip</strong><small>Flights, seats, baggage and alerts together.</small></span></div></div><button class="primary" onclick="document.getElementById('search').scrollIntoView({behavior:'smooth'})">Start planning →</button></div>
+    <div class="pro-card"><b>✈ Recommended for you</b><span style="float:right;color:#15966b;font-size:12px">● Live</span><div class="route"><div><small>JFK · New York</small><strong>08:40</strong><span>Tue, May 20</span></div><div class="route-mid">7h 05m<br>────────<br>Nonstop</div><div class="right"><small>LHR · London</small><strong>20:45</strong><span>Tue, May 20</span></div></div><div class="meta"><span>✓ 1 carry-on</span><span>✓ Free seat selection</span><span>✓ Changeable</span></div><div class="price-row"><div><small>From</small><strong>$428</strong><small>per traveler</small></div><button class="primary" onclick="showScreen('results')">View flight</button></div></div>
+  </section>
+
+  <div class="trust-banner"><div><strong>★ 4.8/5 traveler rating</strong><small>From 100,000+ verified reviews</small></div><div><strong>🔐 Secure by design</strong><small>Protected passenger and payment data</small></div><div><strong>🌎 Built for global travel</strong><small>200+ countries · currencies · languages</small></div><div><strong>◌ Human support</strong><small>Real help when your journey needs it</small></div></div>
+  <div class="stats"><div><b>10M+</b><span>Travelers</span></div><div><b>150K+</b><span>Daily searches</span></div><div><b>500+</b><span>Airlines</span></div><div><b>200+</b><span>Countries</span></div><div><b>4.8/5</b><span>Traveler rating</span></div></div>
+</main>
+
+<div id="app">
+  <section class="screen" id="screen-results">
+    <div class="booking-visual"><div><small>SKY BOOK PRO FLIGHT SEARCH</small><h2 style="margin:5px 0 0;font-size:30px">Find your perfect route</h2></div></div><div class="breadcrumbs">Flights › Search results</div><div class="screen-title"><div><h2>Choose your flight</h2><p style="color:var(--muted)">New York (JFK) → London (LHR) · Round trip</p></div><button class="secondary" onclick="showScreen('home')">← Modify search</button></div>
+    <div class="results-layout"><aside class="panel"><h3>Filter flights</h3><div class="filter"><b>Stops</b><label><span>Nonstop</span><input type="checkbox" checked/></label><label><span>1 stop</span><input type="checkbox"/></label></div><div class="filter"><b>Airlines</b><label><span>Sky Book Airways</span><input type="checkbox" checked/></label><label><span>Global Air</span><input type="checkbox"/></label><label><span>NorthStar</span><input type="checkbox"/></label></div><div class="filter"><b>Max price</b><input class="range" type="range" min="200" max="1500" value="900"/></div><div class="filter"><b>Departure</b><label><span>Morning</span><input type="checkbox"/></label><label><span>Afternoon</span><input type="checkbox"/></label><label><span>Evening</span><input type="checkbox"/></label></div></aside>
+      <div><div class="panel" style="margin-bottom:12px"><b>Best matches</b> · 18 flights found <span style="float:right;color:var(--muted)">Sort: Recommended⌄</span></div>
+        <div class="flight-card"><div class="airline">✈ Sky Book Airways<small>SB 428 · Economy</small></div><div class="times"><div><strong>08:40</strong><small>JFK</small></div><div><small>7h 05m · Nonstop</small><div class="line"></div></div><div><strong>20:45</strong><small>LHR</small></div></div><div class="fare"><strong>$428</strong><small>round trip</small><button class="primary" onclick="showActionLoading('Loading flight details…',()=>showScreen('details'))">Select</button></div></div>
+        <div class="flight-card"><div class="airline">✈ Global Air<small>GA 208 · Economy Flex</small></div><div class="times"><div><strong>10:15</strong><small>JFK</small></div><div><small>7h 20m · Nonstop</small><div class="line"></div></div><div><strong>21:35</strong><small>LHR</small></div></div><div class="fare"><strong>$471</strong><small>round trip</small><button class="primary" onclick="showActionLoading('Loading flight details…',()=>showScreen('details'))">Select</button></div></div>
+        <div class="flight-card"><div class="airline">✈ NorthStar<small>NS 611 · Economy</small></div><div class="times"><div><strong>14:30</strong><small>JFK</small></div><div><small>7h 45m · 1 stop</small><div class="line"></div></div><div><strong>03:15</strong><small>LHR +1</small></div></div><div class="fare"><strong>$389</strong><small>round trip</small><button class="primary" onclick="showActionLoading('Loading flight details…',()=>showScreen('details'))">Select</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-details">
+    <div class="breadcrumbs">Flights › Search results › Flight details</div><div class="screen-title"><div><h2>Flight details</h2><p style="color:var(--muted)">Sky Book Airways · SB 428</p></div><button class="secondary" onclick="showScreen('results')">← Back</button></div>
+    <div class="booking-grid"><div>
+      <div class="panel"><h3>New York → London</h3><div class="route"><div><small>Tue, May 20</small><strong>08:40</strong><span>JFK · Terminal 4</span></div><div class="route-mid">7h 05m<br>────────<br>Nonstop</div><div class="right"><small>Tue, May 20</small><strong>20:45</strong><span>LHR · Terminal 2</span></div></div><div class="meta"><span>✓ Carry-on included</span><span>✓ Seat selection</span><span>✓ Wi-Fi</span><span>✓ Changeable fare</span></div></div>
+      <div class="panel" style="margin-top:15px"><h3>Fare options</h3><div class="flight-card"><div><b>Economy Light</b><small>No checked bag</small></div><div></div><div class="fare"><strong>$428</strong><button class="secondary" onclick="selectFare('Economy Light','$428')">Choose</button></div></div><div class="flight-card"><div><b>Economy Flex</b><small>1 checked bag · Changes included</small></div><div></div><div class="fare"><strong>$518</strong><button class="primary" onclick="selectFare('Economy Flex','$518')">Choose</button></div></div><div class="flight-card"><div><b>Business</b><small>Priority · Lounge · 2 bags</small></div><div></div><div class="fare"><strong>$1,240</strong><button class="secondary" onclick="selectFare('Business','$1,240')">Choose</button></div></div></div>
+    </div><aside class="panel summary"><h3>Your trip</h3><div class="summary-row"><span>Flight</span><b>$428</b></div><div class="summary-row"><span>Taxes & fees</span><b>$74</b></div><div class="summary-row"><span>Service</span><b>$19</b></div><div class="summary-total"><span>Total</span><span style="float:right">$521</span></div><button class="primary" style="width:100%;margin-top:20px" onclick="showActionLoading('Preparing seat map…',()=>showScreen('seats'))">Continue →</button></aside></div>
+  </section>
+
+  <section class="screen" id="screen-seats">
+    <div class="seat-visual"><small>ONBOARD EXPERIENCE</small><h2 style="margin:6px 0 0">Choose the seat that feels right.</h2><p style="opacity:.8;margin-bottom:0">Window views, extra legroom and preferred seating.</p></div><div class="breadcrumbs">Booking › Seat selection</div><div class="screen-title"><div><h2>Choose your seat</h2><p style="color:var(--muted)">JFK → LHR · SB 428 · Boeing 787</p></div></div>
+    <div class="booking-grid"><div class="panel"><div style="text-align:center;margin-bottom:18px"><b>Front of aircraft</b><p style="color:var(--muted);font-size:12px">Select an available seat</p></div><div class="seats" id="seats"></div><div style="text-align:center;color:var(--muted);font-size:11px;margin-top:15px">○ Available &nbsp; <span style="color:#087fff">● Selected</span> &nbsp; ■ Occupied</div></div><aside class="panel summary"><h3>Seat selection</h3><div class="summary-row"><span>Seat</span><b id="selectedSeat">None</b></div><div class="summary-row"><span>Seat fee</span><b id="seatFee">$0</b></div><div class="summary-total"><span>Flight total</span><span style="float:right" id="seatTotal">$521</span></div><button class="primary" style="width:100%;margin-top:20px" onclick="showActionLoading('Saving your seat…',()=>showScreen('passengers'))">Continue →</button></aside></div>
+  </section>
+
+  <section class="screen" id="screen-passengers">
+    <div class="booking-visual"><div><small>YOUR JOURNEY</small><h2 style="margin:5px 0 0">Tell us who is travelling.</h2></div></div><div class="breadcrumbs">Booking › Passenger information</div><div class="steps"><span class="step active">1 Passenger</span><span class="step">2 Baggage</span><span class="step">3 Payment</span><span class="step">4 Confirmation</span></div>
+    <div class="booking-grid"><div class="panel"><h3>Passenger 1</h3><div class="form-grid"><div class="form-group"><label>First name</label><input placeholder="David"/></div><div class="form-group"><label>Last name</label><input placeholder="Traveler"/></div><div class="form-group"><label>Date of birth</label><input type="date"/></div><div class="form-group"><label>Nationality</label><select><option>Canada</option><option>United States</option><option>United Kingdom</option></select></div><div class="form-group"><label>Passport number</label><input placeholder="A12345678"/></div><div class="form-group"><label>Email</label><input type="email" placeholder="traveler@example.com"/></div><div class="form-group"><label>Phone</label><input placeholder="+1 000 000 0000"/></div><div class="form-group"><label>Frequent flyer</label><input placeholder="Optional"/></div></div><h3 style="margin-top:30px">Baggage</h3><div class="panel" style="background:#f7fbff"><label><input type="radio" name="bag" checked/> 1 carry-on included — $0</label><br/><label><input type="radio" name="bag"/> Add checked bag — $65</label><br/><label><input type="radio" name="bag"/> Add 2 checked bags — $120</label></div><button class="primary" onclick="showActionLoading('Preparing secure checkout…',()=>showScreen('payment'))">Continue to payment →</button></div><aside class="panel summary"><h3>Booking summary</h3><div class="summary-row"><span>Flight</span><b>$428</b></div><div class="summary-row"><span>Taxes & fees</span><b>$74</b></div><div class="summary-row"><span>Service</span><b>$19</b></div><div class="summary-total"><span>Total</span><span style="float:right">$521</span></div></aside></div>
+  </section>
+
+  <section class="screen" id="screen-payment">
+    <div class="booking-visual"><div><small>SECURE CHECKOUT</small><h2 style="margin:5px 0 0">Complete your journey with confidence.</h2></div></div><div class="breadcrumbs">Booking › Payment</div><div class="steps"><span class="step">1 Passenger</span><span class="step">2 Baggage</span><span class="step active">3 Payment</span><span class="step">4 Confirmation</span></div>
+    <div class="booking-grid"><div class="panel"><h3>Secure payment</h3><div class="meta" style="margin-bottom:20px"><span>🔒 Encrypted</span><span>✓ PCI-ready checkout</span><span>✓ No card data stored in this demo</span></div><div class="form-grid"><div class="form-group"><label>Cardholder name</label><input placeholder="David Traveler"/></div><div class="form-group"><label>Card number</label><input placeholder="4242 4242 4242 4242"/></div><div class="form-group"><label>Expiry</label><input placeholder="MM / YY"/></div><div class="form-group"><label>CVC</label><input placeholder="123"/></div></div><label style="display:block;margin:22px 0;font-size:13px"><input type="checkbox" checked/> I agree to the fare rules and booking terms.</label><button class="primary" onclick="showActionLoading('Confirming your booking…',()=>showScreen('confirmation'))">Pay $521 & confirm booking</button></div><aside class="panel summary"><h3>Total due</h3><div class="summary-row"><span>Flight</span><b>$428</b></div><div class="summary-row"><span>Taxes & fees</span><b>$74</b></div><div class="summary-row"><span>Service</span><b>$19</b></div><div class="summary-total"><span>Total</span><span style="float:right">$521 CAD</span></div></aside></div>
+  </section>
+
+  <section class="screen" id="screen-confirmation">
+    <div class="confirm"><div class="checkmark">✓</div><h2>Booking confirmed!</h2><p style="color:var(--muted)">Your trip is reserved. Your e-ticket and receipt are ready.</p><div class="booking-ref">SBP-8X42QK</div><div class="ticket"><div class="ticket-grid"><div><small>Passenger</small><strong>David Traveler</strong></div><div><small>Route</small><strong>JFK → LHR</strong></div><div><small>Flight</small><strong>SB 428</strong></div><div><small>Depart</small><strong>08:40 · May 20</strong></div><div><small>Seat</small><strong id="confirmSeat">12A</strong></div><div><small>Class</small><strong>Economy Flex</strong></div></div></div><button class="primary" onclick="showScreen('trips')">Go to My Trips →</button> <button class="secondary" onclick="openModal('E-ticket')">View e-ticket</button></div>
+  </section>
+
+  <section class="screen" id="screen-trips">
+    <div class="screen-title"><div><h2>My Trips</h2><p style="color:var(--muted)">Everything you've booked, in one place.</p></div><button class="primary" onclick="showScreen('home')">+ Book a flight</button></div>
+    <div class="dashboard"><aside class="side"><b style="display:block;padding:12px 10px">MY ACCOUNT</b><button class="active">✈ My Trips</button><button>♡ Saved flights</button><button>◉ Price alerts</button><button>♙ Travelers</button><button>⚙ Settings</button></aside><div><div class="dash-grid"><div class="metric"><b>1</b><span>Upcoming trip</span></div><div class="metric"><b>4</b><span>Saved flights</span></div><div class="metric"><b>2</b><span>Price alerts</span></div></div><div class="trip"><div><small>UPCOMING · MAY 20, 2026</small><div class="trip-route">New York (JFK) → London (LHR)</div><small>Sky Book Airways · SB 428 · Seat 12A</small></div><button class="secondary" onclick="showActionLoading('Confirming your booking…',()=>showScreen('confirmation'))">Manage trip</button></div><div class="trip"><div><small>PRICE ALERT</small><div class="trip-route">Toronto → Paris</div><small>Alert active · Current from $512</small></div><button class="secondary" onclick="openModal('Price alert')">Manage alert</button></div></div></div>
+  </section>
+
+  <section class="screen" id="screen-admin">
+    <div class="booking-visual" style="background-image:linear-gradient(90deg,rgba(2,17,39,.9),rgba(2,17,39,.25)),url('https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=1600&q=85')"><div><small>SKY BOOK PRO OPERATIONS</small><h2 style="margin:5px 0 0">Admin Dashboard</h2></div></div><div class="screen-title"><div><h2>Admin Dashboard</h2><p style="color:var(--muted)">Sky Book Pro operations center.</p></div><span class="badge">● Systems operational</span></div>
+    <div class="dashboard"><aside class="side"><b style="display:block;padding:12px 10px">ADMIN</b><button class="active">▦ Overview</button><button>✈ Flights</button><button>🎫 Bookings</button><button>♙ Customers</button><button>💳 Payments</button><button>◌ Alerts</button><button>⚙ Settings</button></aside><div><div class="dash-grid"><div class="metric"><b>$428K</b><span>Gross bookings · month</span></div><div class="metric"><b>18,420</b><span>Bookings</span></div><div class="metric"><b>96.8%</b><span>Payment success</span></div></div><div class="panel" style="margin-top:15px"><h3>Recent bookings</h3><table class="table"><tr><th>Reference</th><th>Route</th><th>Customer</th><th>Amount</th><th>Status</th></tr><tr><td>SBP-8X42QK</td><td>JFK → LHR</td><td>David Traveler</td><td>$521</td><td><span class="badge">Confirmed</span></td></tr><tr><td>SBP-6A19FD</td><td>YYZ → CDG</td><td>Alex Morgan</td><td>$684</td><td><span class="badge">Confirmed</span></td></tr><tr><td>SBP-3T22LX</td><td>LAX → NRT</td><td>Jordan Lee</td><td>$1,102</td><td><span class="badge warn">Pending</span></td></tr></table></div></div></div>
+  </section>
+</div>
+
+<footer><div class="footer-grid"><div><div class="brand">SKY <span>BOOK</span> PRO ✈</div><p>Your world. One booking away.</p></div><div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Newsroom</a><a href="#">Contact</a></div><div><h4>Support</h4><a href="#">Help Center</a><a href="#">Booking info</a><a href="#">Cancellation</a><a href="#">Support</a></div><div><h4>Travel</h4><a href="#">Destinations</a><a href="#">Deals</a><a href="#">Price alerts</a><a href="#">Travel guide</a></div><div><h4>Mobile</h4><button class="pill"> App Store</button> <button class="pill">▶ Google Play</button></div></div><div class="copyright"><span>© 2026 Sky Book Pro. All rights reserved.</span><span>Terms · Privacy · Cookies</span></div></footer>
+
+<div class="modal" id="modal"><div class="modal-card"><button class="close" onclick="closeModal()">✕</button><h2 id="modalTitle">Sky Book Pro</h2><p id="modalText">Feature ready for integration.</p><div class="result" id="modalResult"></div></div></div>
+
+<script>
+/* Working currency selector */
+const currencyRates={USD:1,CAD:1.37,EUR:.92,GBP:.79,AED:3.67};
+let currentCurrency={code:'USD',symbol:'$',name:'US Dollar'};
+function toggleCurrencyMenu(){
+  document.getElementById('currencyMenu').classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  const menu=document.getElementById('currencyMenu'),btn=document.getElementById('currencyBtn');
+  if(menu && !menu.contains(e.target) && e.target!==btn) menu.classList.remove('open');
+});
+function convertPrice(n){return Math.round(n*currencyRates[currentCurrency.code])}
+function setCurrency(code,symbol,name){
+  currentCurrency={code,symbol,name};
+  document.getElementById('currencyBtn').textContent=code+'⌄';
+  document.querySelectorAll('.currency-check').forEach(x=>x.textContent='');
+  const c=document.getElementById('check-'+code);if(c)c.textContent='✓';
+  updatePrices();
+  document.getElementById('currencyMenu').classList.remove('open');
+}
+function updatePrices(){
+  document.querySelectorAll('.price').forEach(el=>{
+    const m=el.dataset.usd||el.textContent.replace(/[^0-9.]/g,'');
+    if(m){el.dataset.usd=m;el.textContent='From '+currentCurrency.symbol+convertPrice(parseFloat(m));}
+  });
+  document.querySelectorAll('.fare strong').forEach(el=>{
+    const m=el.dataset.usd||el.textContent.replace(/[^0-9.]/g,'');
+    if(m){el.dataset.usd=m;el.textContent=currentCurrency.symbol+convertPrice(parseFloat(m));}
+  });
+  document.querySelectorAll('.summary-row b,.summary-total span:last-child').forEach(el=>{
+    const m=el.dataset.usd||el.textContent.replace(/[^0-9.]/g,'');
+    if(m){el.dataset.usd=m;el.textContent=currentCurrency.symbol+convertPrice(parseFloat(m));}
+  });
+}
+
+/* Loading animation controller */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('pageLoader').classList.add('hide'),1750);
+});
+function showActionLoading(message, callback){
+  const overlay=document.getElementById('actionLoader');
+  document.getElementById('actionLoaderText').textContent=message||'Loading…';
+  overlay.classList.add('active');
+  setTimeout(()=>{overlay.classList.remove('active');if(callback)callback()},850);
+}
+
+const today=new Date(), iso=d=>d.toISOString().slice(0,10);document.getElementById('depart').value=iso(today);let r=new Date(today);r.setDate(r.getDate()+7);document.getElementById('return').value=iso(r);
+function showScreen(name){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));if(name==='home'){window.scrollTo({top:0,behavior:'smooth'});return}document.getElementById('screen-'+name)?.classList.add('active');document.getElementById('app').scrollIntoView({behavior:'smooth'});}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('returnField').style.display=t.dataset.trip==='One Way'?'none':''});
+document.getElementById('searchForm').onsubmit=e=>{e.preventDefault();showActionLoading('Searching the best flights…',()=>showScreen('results'))};
+function openModal(t){document.getElementById('modalTitle').textContent=t;document.getElementById('modalText').textContent='This Sky Book Pro feature is represented in the production-ready interface prototype.';document.getElementById('modalResult').innerHTML='<b>Ready for API integration.</b><br><br>Connect this screen to your flight inventory, payment provider, authentication, notifications, and production database.';document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
+function selectFare(name,price){openModal(name+' selected');document.getElementById('modalText').textContent=price+' fare selected. Continue to seat selection to complete your journey.';document.getElementById('modalResult').innerHTML='<button class="primary" onclick="closeModal();showScreen(\'seats\')">Continue to seat selection →</button>'}
+const seats=document.getElementById('seats');let chosen='12A';for(let row=1;row<=8;row++){['A','B','C','D','E','F'].forEach((letter,i)=>{let b=document.createElement('button');b.className='seat'+((i===2)?' aisle':'');if(row===3&&i===1||row===5&&i===4)b.classList.add('taken');if(row===4&&i===0)b.classList.add('exit');b.textContent=row+letter;b.onclick=()=>{if(b.classList.contains('taken')||b.classList.contains('aisle'))return;document.querySelectorAll('.seat').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chosen=b.textContent;document.getElementById('selectedSeat').textContent=chosen;document.getElementById('seatFee').textContent=b.classList.contains('exit')?'$25':'$0';document.getElementById('seatTotal').textContent=b.classList.contains('exit')?'$546':'$521';document.getElementById('confirmSeat').textContent=chosen};seats.appendChild(b)})}
+document.querySelector('.seat').classList.add('selected');
+</script>
+</body>
+</html>
